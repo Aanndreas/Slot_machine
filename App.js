@@ -16,7 +16,6 @@ const deposit = () => {
     while (true) {
         // Prompting the user to enter a deposit amount
         const depositAmount = prompt("Enter an amount to deposit: ");
-
         // Converting the entered amount to a floating-point number
         const numberDepositAmount = parseFloat(depositAmount);
 
@@ -31,6 +30,29 @@ const deposit = () => {
     }
 }
 
-// Calling the deposit function and storing the result in the 'depositAmount' variable
+// Defining a function to obtain the number of lines to bet on
+const getNumberOfLines = () => {
+    // Using an infinite loop until a valid number of lines is entered
+    while (true) {
+        // Prompting the user to enter the number of lines to bet on
+        const lines = prompt("Enter the number of lines to bet on (1-3): ");
+
+        // Converting the entered number of lines to a floating-point number
+        const numberOfLines = parseFloat(lines);
+
+        // Checking if the entered value is not a valid number or falls outside the allowed range
+        if (isNaN(numberOfLines) || numberOfLines <= 0 || numberOfLines > 3) {
+            // Displaying an error message and prompting the user to try again
+            console.log("Invalid number of lines, please try again");
+        } else {
+            // Returning the valid number of lines if conditions are met
+            return numberOfLines;
+        }
+    }
+}
+
+
+// Calling the functions and storing the results in variables
 const depositAmount = deposit();
+const numberOfLines = getNumberOfLines();
 
