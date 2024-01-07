@@ -28,7 +28,7 @@ const deposit = () => {
             return numberDepositAmount;
         }
     }
-}
+};
 
 // Defining a function to obtain the number of lines to bet on
 const getNumberOfLines = () => {
@@ -49,10 +49,30 @@ const getNumberOfLines = () => {
             return numberOfLines;
         }
     }
-}
+};
 
+// Defining a function to obtain the user's bet amount, considering the available balance
+const getBet = (balance) => {
+    // Using an infinite loop until a valid bet amount is entered
+    while (true) {
+        // Prompting the user to enter the total bet amount
+        const bet = prompt("Enter the total bet: ");
+
+        // Converting the entered bet amount to a floating-point number
+        const numberBet = parseFloat(bet);
+
+        // Checking if the entered value is not a valid number or falls outside the allowed range
+        if (isNaN(numberBet) || numberBet <= 0 || numberBet > balance) {
+            // Displaying an error message and prompting the user to try again
+            console.log("Invalid bet, please try again");
+        } else {
+            // Returning the valid bet amount if conditions are met
+            return numberBet;
+        }
+    }
+};
 
 // Calling the functions and storing the results in variables
-const depositAmount = deposit();
+let balance = deposit();
 const numberOfLines = getNumberOfLines();
-
+const bet = getBet(balance);
